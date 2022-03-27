@@ -1,0 +1,30 @@
+#!/bin/zsh
+
+# Exit script if API token is not valid
+if [[ -z "$API_KEY_RAPIDAPI_UD" ]] 
+then
+    echo "You need a valid RapidAPI key. See dependencies in README"
+    exit 1
+fi
+
+# Variables
+ud_expression=$1
+
+# If script is called with no parameter
+if [ -z "$1" ]
+  then
+  	echo "Enter expression:"
+	read ud_expression
+fi
+
+resJSON=$(wget -O - --quiet \
+	--method GET \
+	--header 'X-RapidAPI-Host: mashape-community-urban-dictionary.p.rapidapi.com' \
+	--header "X-RapidAPI-Key: $API_KEY_RAPIDAPI_UD" \
+	--output-document \
+	- "https://mashape-community-urban-dictionary.p.rapidapi.com/define\?term\=$ud_expression")
+
+echo $resJSON
+outdata=$(echo $resJSON | jq -r ".") #.list[0].definition
+
+echo $outdata
