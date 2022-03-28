@@ -1,5 +1,5 @@
 # 📕 Urban dictonary discord bot
-Let the discord bot explain the uncommon, scary slang terms for your friends and fos in your server!
+Let the discord bot explain the uncommon, scary slang terms for your friends and foes in your server!
 
 ## 👨🏼‍💻 Download
 - To download the program, clone the project with HTTPS
