@@ -7,7 +7,7 @@ then
     exit 1
 fi
 
-# Variables
+#Variables
 ud_expression=$1
 
 # If script is called with no parameter
@@ -17,14 +17,13 @@ if [ -z "$1" ]
 	read ud_expression
 fi
 
-resJSON=$(wget -O - --quiet \
+resJSON=$(wget --quiet \
 	--method GET \
 	--header 'X-RapidAPI-Host: mashape-community-urban-dictionary.p.rapidapi.com' \
-	--header "X-RapidAPI-Key: $API_KEY_RAPIDAPI_UD" \
-	--output-document \
-	- "https://mashape-community-urban-dictionary.p.rapidapi.com/define\?term\=$ud_expression")
+	--header "X-RapidAPI-Key: ${API_KEY_RAPIDAPI_UD}" \
+	--output-document - \
+	- "https://mashape-community-urban-dictionary.p.rapidapi.com/define?term=${ud_expression}")
 
-echo $resJSON
-outdata=$(echo $resJSON | jq -r ".") #.list[0].definition
+outdata=$(echo -E $resJSON | jq -r ".list[0].definition")
 
 echo $outdata
