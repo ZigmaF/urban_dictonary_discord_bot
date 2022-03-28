@@ -15,9 +15,9 @@ Let the discord bot explain the uncommon, scary slang terms for your friends and
 
 ## 🏃🏽‍♂️ Run script
 - Give the program execution permissions
-```chmod +x /path/to/script/./init_ud_dbot```
+```chmod +x /path/to/script/init_ud_dbot```
 - Run the script with the following command:
-```/path/to/script/init_ud_dbot```
+```/path/to/script/./init_ud_dbot```
 
 ## 🤖 Make script run for every new shell
 - Paste the following into the file ~/.zshrc:
